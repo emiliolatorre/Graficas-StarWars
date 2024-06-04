@@ -1,12 +1,8 @@
-// Gráfica de lineas - peliculas por año
+// URLs
 const urlPeliculas = 'https://swapi.dev/api/films/'
 const urlPersonajes = 'https://swapi.dev/api/people/'
 
-
-// Gráfica de barras - personajes por pelicula
-
-
-// FUNCIONES
+// GRÁFICA DE BARRAS
 
 const jsonPeliculas = async () => {
     try {
@@ -44,15 +40,15 @@ jsonPeliculas ()
         fullWidth: true,
         chartPadding: {
           right: 40
+        },
+        axisY: {
+          onlyInteger: true
         }
       });
 })
 .catch(error => console.error(error))
 
 // GRAFICA LINEAS
-
-// dos primeros selects, el tercero selector multiple
-// desplegar rama main, y te da una url con una web desplegada
 
 const jsonPersonajes = async () => {
     try {
@@ -85,18 +81,18 @@ jsonPersonajes()
         ]
       };
       
-      var options = {
-        high: 10,
-        low: -10,
+      const options = {
+        high: 7,
+        low: 0,
         axisX: {
           labelInterpolationFnc: function(value, index) {
             return index % 2 === 0 ? value : null;
           }
+        },
+        axisY: {
+          onlyInteger: true
         }
       };
-      
       new Chartist.Bar('#chart2', data, options);
-
-
 })
 .catch(error => console.error(error))
